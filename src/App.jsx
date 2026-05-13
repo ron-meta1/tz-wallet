@@ -56,48 +56,58 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center" style={{ padding: "20px" }}>
 
-      <h2>Create Wallet</h2>
+      <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md">
 
-      <input
-        type="text"
-        placeholder="Wallet Name"
-        value={walletName}
-        onChange={(e) => setWalletName(e.target.value)}
-      />
+        <h2 className="text-2xl font-bold mb-6 text-center">Create Wallet</h2>
 
-      <br />
-      <br />
+        <input
+          type="text"
+          placeholder="Wallet Name"
+          value={walletName}
+          onChange={(e) => setWalletName(e.target.value)}
+          className="w-full border p-3 rounded-lg mb-4"
+        />
 
-      <input
-        type="password"
-        placeholder="Enter Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        <br />
+        <br />
 
-      <br />
-      <br />
+        <input
+          type="password"
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full border p-3 rounded-lg mb-4"
+        />
 
-      <input
-        type="password"
-        placeholder="Confirm Password"
-        value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
-      />
+        <br />
+        <br />
 
-      <br />
-      <br />
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          className="w-full border p-3 rounded-lg mb-4"
+        />
 
-      <button
-        onClick={handleCreate}
-        disabled={loading}
-      >
-        {loading ? "Creating..." : "Create Wallet"}
-      </button>
+        <br />
+        <br />
 
-      <p>{message}</p>
+        <button
+          onClick={handleCreate}
+          disabled={loading}
+          className="w-full bg-black text-white p-3 rounded-lg"
+        >
+          {loading ? "Creating..." : "Create Wallet"}
+        </button>
+
+        {message && (
+          <p className="mt-4 text-center">{message}</p>
+        )}
+
+      </div>
 
     </div>
   );
