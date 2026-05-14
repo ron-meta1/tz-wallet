@@ -10,7 +10,7 @@ function UnlockWallet() {
     const location = useLocation();
 
     if (!location.state?.address) {
-        return <Navigate to="/wallets" />;
+        return <Navigate to="/" />;
     }
 
     const { address } = location.state;

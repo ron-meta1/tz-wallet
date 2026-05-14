@@ -5,12 +5,15 @@ const WalletContext = createContext();
 export function WalletProvider({ children }) {
     
     const [activeWallet, setActiveWallet] = useState(null);
+    const [network, setNetwork] = useState("sepolia");
 
     return (
         <WalletContext.Provider
             value={{
                 activeWallet,
-                setActiveWallet
+                setActiveWallet,
+                network,
+                setNetwork
             }}
         >
             {children}

@@ -14,12 +14,12 @@ function App() {
       <Routes>
 
         <Route
-          path="/"
+          path="/create"
           element={<CreateWallet />}
         />
 
         <Route
-          path="/wallets"
+          path="/"
           element={<WalletList />}
         />
 

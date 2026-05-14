@@ -91,9 +91,9 @@ function WalletList() {
                                         transition
                                         cursor-pointer
                                     "
-                                    >
+                                >
                                     Unlock
-                                    </button>
+                                </button>
 
                             </div>
                         ))}
@@ -102,7 +102,7 @@ function WalletList() {
                 )}
 
                 <div className="mt-4">
-                    <Link to="/">
+                    <Link to="/create">
                         <button className="w-full bg-black text-white p-3 rounded-lg">
                             Add Account
                         </button>
