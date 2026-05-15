@@ -6,6 +6,7 @@ import { useWallet } from "../context/WalletContext";
 import { getBalance } from "../wallet/getBalance";
 import { formatBalance } from "../utils/formatBalance";
 import { NETWORKS } from "../config/networks";
+import CopyButton from "../components/CopyButton";
 
 function Dashboard() {
 
@@ -50,19 +51,19 @@ function Dashboard() {
         setActiveWallet(null);
     };
     
-    const handleCopy = async () => {
-        try {
-            await navigator.clipboard.writeText(activeWallet.address);
-            setCopied(true);
+    // const handleCopy = async () => {
+    //     try {
+    //         await navigator.clipboard.writeText(activeWallet.address);
+    //         setCopied(true);
 
-            setTimeout(() => {
-                setCopied(false);
-            }, 2000);
+    //         setTimeout(() => {
+    //             setCopied(false);
+    //         }, 2000);
 
-        } catch (err) {
-            console.error(err);
-        }
-    };
+    //     } catch (err) {
+    //         console.error(err);
+    //     }
+    // };
 
     // if (!activeWallet) {
     //     return null;
@@ -91,16 +92,7 @@ function Dashboard() {
                             <h3 className="text-sm text-gray-500">
                                 {activeWallet.address}
                             </h3>
-                            <button
-                                onClick={handleCopy}
-                                className={`cursor-pointer hover:bg-gray-200 transition duration-300 active:bg-gray-400 active:scale-90 rounded-full p-2 ${copied? "bg-gray-200" : ""}`}
-                            >
-                                {copied ? (
-                                    <Check size={12}/>
-                                ) : (
-                                    <Copy size={12}/>
-                                )}
-                            </button>
+                            <CopyButton text={activeWallet.address} />
                         </div>
                     </div>
                 </div>
