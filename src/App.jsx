@@ -4,6 +4,9 @@ import CreateWallet from "./pages/CreateWallet";
 import WalletList from "./pages/WalletList";
 import UnlockWallet from "./pages/UnlockWallet";
 import Dashboard from "./pages/Dashboard";
+import SendTransaction from "./pages/SendTransaction";
+import ConfirmTransaction from "./pages/ConfirmTransaction";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
 
@@ -30,7 +33,29 @@ function App() {
 
         <Route
           path="/dashboard"
-          element={<Dashboard />}
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/send"
+          element={
+            <ProtectedRoute>
+              <SendTransaction/>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/confirm"
+          element={
+            <ProtectedRoute>
+              <ConfirmTransaction/>
+            </ProtectedRoute>
+          }
         />
 
       </Routes>

@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Copy, Check } from 'lucide-react';
 import { useWallet } from "../context/WalletContext";
+import { getBalance } from "../wallet/getBalance";
+import { formatBalance } from "../utils/formatBalance";
 import { NETWORKS } from "../config/networks";
 
 function Dashboard() {
@@ -13,34 +15,29 @@ function Dashboard() {
     const { activeWallet, setActiveWallet, network, setNetwork } = useWallet();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!activeWallet) {
-            navigate("/");
-        }
-    }, [activeWallet, navigate]);
+    // useEffect(() => {
+    //     if (!activeWallet) {
+    //         navigate("/");
+    //     }
+    // }, [activeWallet, navigate]);
     
     useEffect(() => {
+        
         const fetchBalance = async () => {
+
             try {
                 
                 setLoading(true)
                 if (!activeWallet) return;
                 
-                const selectedNetwork = NETWORKS[network];
-                
-                if (!selectedNetwork) {
-                    throw new Error("Invalid network");
-                }
-                
-                const web3 = new Web3(selectedNetwork.rpc);
-                const wei = await web3.eth.getBalance(activeWallet.address);
-                const eth = web3.utils.fromWei(wei, "ether");
+                const eth = await getBalance(activeWallet.address, network);
                 setBalance(eth)
                 
             } catch (err) {
                 
                 console.error(err);
                 setBalance("Error");
+                
             } finally {
                 setLoading(false);
             }
@@ -67,9 +64,9 @@ function Dashboard() {
         }
     };
 
-    if (!activeWallet) {
-        return null;
-    }
+    // if (!activeWallet) {
+    //     return null;
+    // }
 
     return (
 
@@ -90,7 +87,7 @@ function Dashboard() {
                         <p className="text-sm text-gray-500">
                             Address:
                         </p>
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center justify-between gap-1">
                             <h3 className="text-sm text-gray-500">
                                 {activeWallet.address}
                             </h3>
@@ -140,7 +137,7 @@ function Dashboard() {
                     <p className="text-sm font-semibold px-1">
                         Balance: {loading ? (
                             <span className="inline-block w-20 h-4 bg-gray-300 rounded animate-pulse align-middle"></span>
-                            ) : `${balance} ${NETWORKS[network].symbol}`}
+                            ) : `${formatBalance(balance,6)} ${NETWORKS[network].symbol}`}
                     </p>
                 </div>
 
@@ -175,6 +172,15 @@ function Dashboard() {
                         className="w-full bg-black text-white p-3 rounded-lg"
                     >
                         Lock Wallet
+                    </button>
+                </div>
+
+                <div className="space-y-3 mt-6">
+                    <button
+                        onClick={() => navigate("/send")}
+                        className="w-full bg-black text-white p-3 rounded-lg"
+                    >
+                        Send Transaction
                     </button>
                 </div>
 

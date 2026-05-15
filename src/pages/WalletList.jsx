@@ -73,9 +73,9 @@ function WalletList() {
                                 <button
                                     onClick={() =>
                                         navigate("/unlock", {
-                                        state: {
-                                            address: wallet.address
-                                        }
+                                            state: {
+                                                address: wallet.address
+                                            }
                                         })
                                     }
                                     className="
