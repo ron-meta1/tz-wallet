@@ -71,14 +71,14 @@ function ConfirmTransaction() {
                         <p className="text-sm text-gray-500">
                             From:
                         </p>
-                        <p className="text-sm font-semibold text-gray-500">{activeWallet.address}</p>
+                        <p className="text-sm font-semibold text-gray-500 break-all">{activeWallet.address}</p>
                     </div>
 
                     <div>
                         <p className="text-sm text-gray-500">
                             To:
                         </p>
-                        <p className="text-sm font-semibold text-gray-500">{to}</p>
+                        <p className="text-sm font-semibold text-gray-500 break-all">{to}</p>
                     </div>
                 </div>
                 

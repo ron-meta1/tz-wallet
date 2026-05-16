@@ -89,7 +89,7 @@ function Dashboard() {
                             Address:
                         </p>
                         <div className="flex items-center justify-between gap-1">
-                            <h3 className="text-sm text-gray-500">
+                            <h3 className="text-sm text-gray-500 break-all">
                                 {activeWallet.address}
                             </h3>
                             <CopyButton text={activeWallet.address} />
