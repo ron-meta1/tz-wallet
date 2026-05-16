@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createWallet } from "../wallet/createWallet";
+import NavLinkButton from "../components/NavLinkButton";
 
 function CreateWallet() {
 
@@ -106,6 +107,10 @@ function CreateWallet() {
         {message && (
           <p className="mt-4 text-center">{message}</p>
         )}
+
+        <NavLinkButton to="/">
+            Accounts
+        </NavLinkButton>
 
       </div>
 

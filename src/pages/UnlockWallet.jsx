@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, Navigate, useNavigate } from "react-router-dom";
 import { unlockWallet } from "../wallet/unlockWallet";
 import { useWallet } from "../context/WalletContext";
+import NavLinkButton from "../components/NavLinkButton";
 
 function UnlockWallet() {
 
@@ -87,6 +88,10 @@ function UnlockWallet() {
                         </p>
                     </div>
                 )} */}
+
+                <NavLinkButton to="/">
+                    Accounts
+                </NavLinkButton>
 
             </div>
         </div>

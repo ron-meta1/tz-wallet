@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { sendTransaction } from "../wallet/sendTransaction";
 import { useWallet } from "../context/WalletContext";
 import { NETWORKS } from "../config/networks";
+import NavLinkButton from "../components/NavLinkButton";
 
 function SendTransaction() {
     
@@ -88,6 +89,11 @@ function SendTransaction() {
                         </button>
 
                         <p className="mt-4 text-center">{message}</p>
+
+                <NavLinkButton to="/dashboard">
+                    Dashboard
+                </NavLinkButton>
+
             </div>
         </div>
     );
