@@ -47,7 +47,7 @@ function SendTransaction() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="min-h-screen bg-gray-100 flex justify-center p-2">
             <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md">
                 <h2 className="text-2xl font-bold mb-6 text-center">Send</h2>
 
